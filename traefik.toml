@@ -18,14 +18,16 @@ address = ":8080"
     [entryPoints.https.tls]
 
 [acme]
-email = "synkx@hotmail.fr"
+email = "yourmail@mail.com" # input your email here
 storage = "acme.json"
 entryPoint = "https"
 onHostRule = true
 onDemand = false
 
 [acme.dnsChallenge]
-  provider = "digitalocean"
+  provider = "digitalocean" 
+  # use the provider of your server
+  # https://docs.traefik.io/configuration/acme/#provider
   delayBeforeCheck = 0
 
 [acme.httpChallenge]
