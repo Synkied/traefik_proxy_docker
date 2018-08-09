@@ -3,7 +3,10 @@ defaultEntryPoints = ["http", "https"]
 [web]
 address = ":8080"
   [web.auth.basic]
-  users = ["admin:$apr1$xOZ6iPoL$As9vJB85uPhWjk4dA3RZR."]
+  users = ["admin:password"]
+  # To obtain password:
+  # sudo apt-get install apache2-utils
+  # htpasswd -nb admin secure_password
 
 [entryPoints]
   [entryPoints.http]
