@@ -11,9 +11,13 @@ services:
       - ./traefik.toml:/traefik.toml
       - ./acme.json:/acme.json
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      "traefik.port=8080"
     ports:
       - '80:80'
       - '443:443'
+    networks:
+      proxy
 
 networks:
   traefik:
@@ -27,6 +31,7 @@ networks:
       -v $PWD/acme.json:/acme.json \
       -p 80:80 \
       -p 443:443 \
+      -l traefik.port=8080 \
       --network proxy \
       --name traefik_default \
       traefik:v1.5.0-rc5 --docker
