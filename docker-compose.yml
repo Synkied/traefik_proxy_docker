@@ -15,6 +15,6 @@ services:
       - '443:443'
 
 networks:
-  internal:
-    proxy
+  traefik:
+    name: proxy
 
