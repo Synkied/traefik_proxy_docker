@@ -16,5 +16,5 @@ services:
 
 networks:
   traefik:
-    name: proxy
+    proxy
 
