@@ -1,21 +1,18 @@
 version: '3'
 
 services:
+    traefik:
+        volumes:
+            - '/var/run/docker.sock:/var/run/docker.sock'
+            - '$PWD/traefik.toml:/traefik.toml'
+            - '$PWD/acme.json:/acme.json'
+        ports:
+            - '80:80'
+            - '443:443'
+        container_name: traefik_default
+        image: 'traefik:v1.5.0-rc5'
 
-  traefik_default:
-    container_name: traefik_default
-    restart: always
-    image: traefik:v1.5.0-rc5
-    volumes:
-      - ./traefik.toml:/traefik.toml
-      - ./acme.json:/acme.json
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - '80:80'
-      - '443:443'
-    networks:
-      - proxy
-
-networks:
-  traefik:
-    name: proxy
+# networks:
+#   traefik:
+#     external:
+#         name: proxy
