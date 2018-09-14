@@ -13,10 +13,16 @@ services:
     ports:
       - '80:80'
       - '443:443'
-    networks:
-      - proxy
 
 networks:
-  traefik:
-    external:
-        name: proxy
+  proxy
+
+          docker run -d \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v $PWD/traefik.toml:/traefik.toml \
+      -v $PWD/acme.json:/acme.json \
+      -p 80:80 \
+      -p 443:443 \
+      --network proxy \
+      --name traefik_default \
+      traefik:v1.5.0-rc5 --docker

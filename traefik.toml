@@ -24,11 +24,5 @@ entryPoint = "https"
 onHostRule = true
 onDemand = false
 
-[acme.dnsChallenge]
-  provider = "digitalocean" 
-  # use the provider of your server
-  # https://docs.traefik.io/configuration/acme/#provider
-  delayBeforeCheck = 0
-
 [acme.httpChallenge]
   entryPoint = "http"
