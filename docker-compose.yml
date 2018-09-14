@@ -1,3 +1,4 @@
+# work in progress
 version: '3'
 
 services:
@@ -16,5 +17,16 @@ services:
 
 networks:
   traefik:
-    proxy
+    external:
+        name: proxy
 
+# Use this
+          docker run -d \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v $PWD/traefik.toml:/traefik.toml \
+      -v $PWD/acme.json:/acme.json \
+      -p 80:80 \
+      -p 443:443 \
+      --network proxy \
+      --name traefik_default \
+      traefik:v1.5.0-rc5 --docker
