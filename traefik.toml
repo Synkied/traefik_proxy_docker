@@ -24,9 +24,5 @@ entryPoint = "https"
 onHostRule = true
 onDemand = false
 
-[acme.dnsChallenge]
-  provider = "digitalocean"
-  delayBeforeCheck = 0
-
 [acme.httpChallenge]
   entryPoint = "http"
